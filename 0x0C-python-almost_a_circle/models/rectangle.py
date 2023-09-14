@@ -12,12 +12,20 @@ class Rectangle(Base):
         self.y = y
         super().__init__(id)
 
+    @staticmethod
+    def validator(method, val):
+        if type(val) is not int:
+            raise TypeError(f"{method} must be an integer")
+
     @property
     def width(self):
         return self.__width
 
     @width.setter
     def width(self, val):
+        self.validator("width", val)
+        if val <= 0:
+            raise ValueError("width must be > 0")
         self.__width = val
 
     @property
@@ -26,6 +34,9 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, val):
+        self.validator("height", val)
+        if val <= 0:
+            raise ValueError("height must be >0")
         self.__height = val
 
     @property
@@ -34,6 +45,9 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, val):
+        self.validator("x", val)
+        if val < 0:
+            raise ValueError("x must be >= 0")
         self.__x = val
 
     @property
@@ -42,4 +56,7 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, val):
+        self.validator("y", val)
+        if val < 0:
+            raise ValueError("y must be >= 0")
         self.__y = val
