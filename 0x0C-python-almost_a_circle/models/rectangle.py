@@ -98,12 +98,14 @@ class Rectangle(Base):
 
     def __str__(self):
         """return id x/y width/high"""
-        repres = "[Rectangle] " + "(" + str(self.id) + ") "
-        repres += str(self.__x) + "/" + str(self.__y)
-        repres += " - " + str(self.__width) + "/" + str(self.__height)
+        repres = "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
+                                                         self.x,
+                                                         self.y,
+                                                         self.width,
+                                                         self.height)
         return repres
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """Update rectangle attributes
         Args:
             *args list of values
@@ -111,7 +113,10 @@ class Rectangle(Base):
             2- width
             3- height
             4- x
-            5- y """
+            5- y
+
+            **kwargs (dict): New key/value pairs of attributes.
+            """
         if args and len(args) != 0:
             a = 0
             for arg in args:
@@ -129,3 +134,19 @@ class Rectangle(Base):
                 elif a == 4:
                     self.y = arg
                 a += 1
+
+        elif kwargs and len(kwargs) != 0:
+            for k, v in kwargs.items():
+                if k == "id":
+                    if v is None:
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        self.id = v
+                elif k == "width":
+                    self.width = v
+                elif k == "height":
+                    self.height = v
+                elif k == "x":
+                    self.x = v
+                elif k == "y":
+                    self.y = v
