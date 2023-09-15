@@ -84,10 +84,17 @@ class Rectangle(Base):
     def area(self):
         """Calculate area of rectangle"""
         return self.__width * self.__height
-    
+
     def display(self):
         """function to represent triangle by #"""
         for i in range(self.__height):
             for i in range(self.__width):
                 print("#", end="")
             print()
+
+    def __str__(self):
+        """return id x/y width/high"""
+        repres = "[Rectangle] " + "(" + str(self.id) + ") "
+        repres += str(self.__x) + "/" + str(self.__y)
+        repres += " - " + str(self.__width) + "/" + str(self.__height)
+        return repres
