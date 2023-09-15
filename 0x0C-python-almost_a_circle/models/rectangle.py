@@ -35,7 +35,7 @@ class Rectangle(Base):
 
     @property
     def width(self):
-         """Set/get the width of the Rectangle."""
+        """Set/get the width of the Rectangle."""
         return self.__width
 
     @width.setter
@@ -47,7 +47,7 @@ class Rectangle(Base):
 
     @property
     def height(self):
-         """Set/get the height of the Rectangle."""
+        """Set/get the height of the Rectangle."""
         return self.__height
 
     @height.setter
@@ -80,3 +80,7 @@ class Rectangle(Base):
         if val < 0:
             raise ValueError("y must be >= 0")
         self.__y = val
+
+    def area(self):
+        """Calculate area of rectangle"""
+        return self.__width * self.__height
