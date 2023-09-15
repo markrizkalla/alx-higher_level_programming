@@ -102,3 +102,30 @@ class Rectangle(Base):
         repres += str(self.__x) + "/" + str(self.__y)
         repres += " - " + str(self.__width) + "/" + str(self.__height)
         return repres
+
+    def update(self, *args):
+        """Update rectangle attributes
+        Args:
+            *args list of values
+            1- id
+            2- width
+            3- height
+            4- x
+            5- y """
+        if args and len(args) != 0:
+            a = 0
+            for arg in args:
+                if a == 0:
+                    if arg is None:
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        self.id = arg
+                elif a == 1:
+                    self.width = arg
+                elif a == 2:
+                    self.height = arg
+                elif a == 3:
+                    self.x = arg
+                elif a == 4:
+                    self.y = arg
+                a += 1
