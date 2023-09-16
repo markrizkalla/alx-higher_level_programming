@@ -1,25 +1,20 @@
 #!/usr/bin/python3
 """ Doc """
 from square import Square
+from base import Base
+from rectangle import Rectangle
+
 
 if __name__ == "__main__":
 
-    s1 = Square(5)
+    s1 = Square(10, 2, 1)
     print(s1)
-    print(s1.area())
-    s1.display()
+    s1_dictionary = s1.to_dictionary()
+    print(s1_dictionary)
+    print(type(s1_dictionary))
 
-    print("---")
-
-    s2 = Square(2, 2)
+    s2 = Square(1, 1)
     print(s2)
-    print(s2.area())
-    s2.display()
-
-    print("---")
-
-    s3 = Square(3, 1, 3)
-    print(s3)
-    print(s3.area())
-    s3.display()
-
+    s2.update(**s1_dictionary)
+    print(s2)
+    print(s1 == s2)
