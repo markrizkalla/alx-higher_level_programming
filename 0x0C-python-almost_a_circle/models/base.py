@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Base class"""
 import json
+import turtle
 
 
 class Base:
@@ -86,3 +87,34 @@ class Base:
                 return [cls.create(**d) for d in list_dicts]
         except IOError:
             return []
+
+    @classmethod
+    def draw(list_rectangles, list_squares):
+        """function to draw rec and sque graphically"""
+        for rectangle in list_rectangles:
+            t = turtle
+            t.setpos(rectangle.x, rectangle.y)
+            t.pencolor("red")
+            t.pendown()
+            t.forward(rectangle.height)
+            t.left(90)
+            t.forward(rectangle.width)
+            t.left(90)
+            t.forward(rectangle.height)
+            t.left(90)
+            t.forward(rectangle.width)
+            t.penup()
+
+        for square in list_squares:
+            t = turtle
+            t.setpos(square.x, square.y)
+            t.pencolor("blue")
+            t.pendown()
+            t.forward(square.size)
+            t.left(90)
+            t.forward(square.size)
+            t.left(90)
+            t.forward(square.size)
+            t.left(90)
+            t.forward(square.size)
+            t.penup()
