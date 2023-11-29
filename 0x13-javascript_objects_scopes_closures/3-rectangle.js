@@ -11,7 +11,7 @@ class Rectangle {
     for (let i = 0; i < this.height; i++) {
       let s = '';
       for (let j = 0; j < this.weight; j++) {
-        s += 'x';
+        s += 'X';
       }
       console.log(s);
     }
