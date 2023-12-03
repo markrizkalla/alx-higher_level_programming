@@ -7,12 +7,12 @@ import sys
 import requests
 
 if __name__ == "__main__":
-    q = = "" if len(sys.argv) == 1 else sys.argv[1]
+    q = "" if len(sys.argv) == 1 else sys.argv[1]
     payload = {'q': q}
     r = requests.post('http://0.0.0.0:5000/search_user', data=payload)
     try:
         res = r.json()
-        if re == {}:
+        if res == {}:
             print("No result")
         else:
             print("[{}] {}".format(response.get("id"), response.get("name")))
