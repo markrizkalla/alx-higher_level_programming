@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-import requests
-import sys
 """list the 10 most recent commits on a given GitHub repository.
 """
+import sys
+import requests
 
 
 if __name__ == "__main__":
