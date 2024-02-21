@@ -2,23 +2,22 @@
 
 const request = require('request');
 
-const dic = {};
-request('https://jsonplaceholder.typicode.com/todos', function (error, response, body) {
+const url = process.argv[2];
+
+request(url, (error, response, body) => {
   if (error) {
-    console.log('error');
+    console.log(error);
+    return;
   }
 
-  const bodyJson = JSON.parse(body);
-  bodyJson.forEach(myFunc);
+  const tasks = JSON.parse(body);
 
-  function myFunc (item) {
-    if (item.completed === true) {
-      if (dic[item.userId] == null) {
-        dic[item.userId] = 0;
-      }
-      dic[item.userId] = dic[item.userId] + 1;
+  const completedTasks = tasks.reduce((completed, task) => {
+    if (task.completed) {
+      completed[task.userId] = (completed[task.userId] || 0) + 1;
     }
-  }
+    return completed;
+  }, {});
 
-  console.log(dic);
+  console.log(completedTasks);
 });
